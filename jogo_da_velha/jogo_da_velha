@@ -1,0 +1,52 @@
+
+tabuleiro =[[" ", " ", " "],
+            [" ", " ", " "],
+            [" ", " ", " "]]
+def mostar_tabuleiro(): 
+    print(tabuleiro[0][0], "|", tabuleiro[0][1], '|', tabuleiro[0][2])
+    print("---------")
+    print(tabuleiro[1][0], "|", tabuleiro[1][1], '|', tabuleiro[1][2])
+    print("---------")
+    print(tabuleiro[2][0], "|", tabuleiro[2][1], '|', tabuleiro[2][2])
+
+jogo = True
+
+mostar_tabuleiro()
+
+jogador_atual = 'x'
+
+while jogo:
+    linha = int(input("Qual a linha: "))
+    coluna = int(input("Qual coluna: "))
+
+
+    if linha >= 0 and linha <= 2 and coluna >= 0 and coluna <= 2:
+        if tabuleiro[linha][coluna] == " ":
+           tabuleiro[linha][coluna] = jogador_atual
+
+        else:
+            print("A casa já está ocupada")
+    else:
+        print("\nOs números tem que ser 0, 1 ou 2!! \n")
+
+        #linhas
+    if (tabuleiro[0][0] == tabuleiro[0][1] == tabuleiro[0][2] and tabuleiro[0][0] != " " or
+    tabuleiro[1][0] == tabuleiro[1][1] == tabuleiro[1][2] and tabuleiro[1][0] != " " or
+    tabuleiro[2][0] == tabuleiro[2][1] == tabuleiro[2][2] and tabuleiro[2][0] != " " or
+        #colunas
+    tabuleiro[0][0] == tabuleiro[1][0] == tabuleiro[2][0] and tabuleiro[0][0] != " "or
+    tabuleiro[0][1] == tabuleiro[1][1] == tabuleiro[2][1] and tabuleiro[0][1] != " " or
+    tabuleiro[0][2] == tabuleiro[1][2] == tabuleiro[2][2] and tabuleiro[0][2] != " " or
+        #diagonais   
+    tabuleiro[0][0] == tabuleiro[1][1] == tabuleiro[2][2] and tabuleiro[0][0] != " "or
+    tabuleiro[0][2] == tabuleiro[1][1] == tabuleiro[2][0] and tabuleiro[0][2] != " "):
+        print("Você ganhou!!")
+        jogo = False
+
+    if jogador_atual == 'x':
+        jogador_atual = 'o'
+
+    else:
+        jogador_atual = 'x'
+
+    mostar_tabuleiro()
